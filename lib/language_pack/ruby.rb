@@ -18,7 +18,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   JVM_BASE_URL         = "http://heroku-jdk.s3.amazonaws.com"
   LATEST_JVM_VERSION   = "openjdk7-latest"
   LEGACY_JVM_VERSION   = "openjdk1.7.0_25"
-  DEFAULT_RUBY_VERSION = "ruby-2.0.0"
+  DEFAULT_RUBY_VERSION = "ruby-2.2.3"
   RBX_BASE_URL         = "http://binaries.rubini.us/heroku"
   NODE_BP_PATH         = "vendor/node/bin"
 
@@ -795,7 +795,7 @@ params = CGI.parse(uri.query || "")
 
       # fix for https://github.com/heroku/heroku-buildpack-ruby/issues/86
       if (!@metadata.exists?(rubygems_version_cache) ||
-          (old_rubygems_version == "2.0.0" && old_rubygems_version != rubygems_version)) &&
+          (old_rubygems_version == "2.2.3" && old_rubygems_version != rubygems_version)) &&
           @metadata.exists?(ruby_version_cache) && @metadata.read(ruby_version_cache).chomp.include?("ruby 2.0.0p0")
         puts "Updating to rubygems #{rubygems_version}. Clearing bundler cache."
         purge_bundler_cache
